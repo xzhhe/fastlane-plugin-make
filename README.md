@@ -18,9 +18,55 @@ Linux GNU Makefile make wrapper
 
 ## Example
 
-Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.
+### Makefile
 
-**Note to author:** Please set up a sample project to make it easy for users to explore what your plugin does. Provide everything that is necessary to try out the plugin in this project (including a sample Xcode/Android project if necessary)
+> /Users/xiongzenghui/Desktop/amake
+
+```makefile
+hello:
+	@echo "hello"
+
+world:
+	@echo "world"
+
+welcome:
+	@echo "welcome"
+
+all:
+	@echo ${NAME}
+	@echo ${AGE}
+```
+
+### make
+
+```ruby
+make(file: '/Users/xiongzenghui/Desktop/amake')
+```
+
+```ruby
+make(
+  file: '/Users/xiongzenghui/Desktop/amake',
+  target: 'all'
+)
+```
+
+```ruby
+make(
+  file: '/Users/xiongzenghui/Desktop/amake',
+  target: 'all',
+  envs: {NAME: 'xiongzenghui', AGE: 99}
+)
+```
+
+```ruby
+make(
+  file: '/Users/xiongzenghui/Desktop/amake',
+  target: 'all',
+  envs: {NAME: 'xiongzenghui', AGE: 99},
+  jobs: '2'
+)
+```
+
 
 ## Run tests for this plugin
 

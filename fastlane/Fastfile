@@ -1,3 +1,21 @@
 lane :test do
-  make
+  make(file: '/Users/xiongzenghui/Desktop/amake')
+
+  make(
+    file: '/Users/xiongzenghui/Desktop/amake',
+    target: 'all'
+  )
+
+  make(
+    file: '/Users/xiongzenghui/Desktop/amake',
+    target: 'all',
+    envs: {NAME: 'xiongzenghui', AGE: 99}
+  )
+
+  make(
+    file: '/Users/xiongzenghui/Desktop/amake',
+    target: 'all',
+    envs: {NAME: 'xiongzenghui', AGE: 99},
+    jobs: '2'
+  )
 end

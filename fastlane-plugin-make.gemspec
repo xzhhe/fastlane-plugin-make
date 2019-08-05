@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'zxcvb1234001@163.com'
 
   spec.summary       = 'Linux GNU Makefile make wrapper'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-make"
+  spec.homepage      = 'https://github.com/xzhhe/fastlane-plugin-make'
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
