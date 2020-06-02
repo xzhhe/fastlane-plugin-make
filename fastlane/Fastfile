@@ -7,9 +7,8 @@ lane :test do
   )
 
   make(
-    file: '/Users/xiongzenghui/Desktop/amake',
-    target: 'all',
-    envs: {NAME: 'xiongzenghui', AGE: 99}
+    file: '/Users/xiongzenghui/Desktop/osee2unified_flutter/osee2unified/Makefile',
+    envs: {enable_flutter_mode: 1}
   )
 
   make(
