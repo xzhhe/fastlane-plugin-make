@@ -13,17 +13,31 @@ module Fastlane
         envs = params[:envs]
         jobs = params[:jobs]
 
+        cmds = []
+        if envs
+          envs.each do |k, v|
+            cmds << "export #{k.to_s.strip}=#{v}"
+          end
+        end
+        export_cmd = cmds.join(';')
+        # puts "export_cmd:"
+        # pp export_cmd
+
         cmds = ['make']
         cmds << "-C #{File.dirname(file)}"
         cmds << "-f #{File.basename(file)}"
         cmds << target if target
-        envs.each do |k, v|
-          cmds << "#{k.to_s}=#{v}"
-        end if envs
         cmds << "-j#{jobs}" if jobs
+        make_cmd = cmds.join(' ')
+        # puts "make_cmd:"
+        # pp make_cmd
 
-        # Actions.lane_context[SharedValues::MAKE_OUTPUT] = Actions.sh(cmds.join(' '))
-        Actions.sh(cmds.join(' '))
+        cmds = [export_cmd, make_cmd]
+        cmd = cmds.join(';')
+        # puts "cmd:"
+        # pp cmd
+
+        Actions.sh(cmd)
       end
 
       def self.description
