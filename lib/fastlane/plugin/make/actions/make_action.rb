@@ -13,13 +13,15 @@ module Fastlane
         envs = params[:envs]
         jobs = params[:jobs]
 
-        cmds = []
-        if envs
-          envs.each do |k, v|
-            cmds << "export #{k.to_s.strip}=#{v}"
-          end
-        end
-        export_cmd = cmds.join(';')
+        export_cmd = if envs
+                       cmds = []
+                       envs.each do |k, v|
+                         cmds << "export #{k.to_s.strip}=#{v}"
+                       end
+                       cmds.join(';')
+                     else
+                       nil
+                     end
         # puts "export_cmd:"
         # pp export_cmd
 
@@ -32,7 +34,10 @@ module Fastlane
         # puts "make_cmd:"
         # pp make_cmd
 
-        cmds = [export_cmd, make_cmd]
+        cmds = [
+          (export_cmd if export_cmd),
+          make_cmd
+        ].compact
         cmd = cmds.join(';')
         # puts "cmd:"
         # pp cmd
